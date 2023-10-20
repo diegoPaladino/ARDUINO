@@ -1,23 +1,36 @@
-#include <AccelStepper.h>
+/* Programa Gerador de Caracter Especial no LCD
+   Blog Eletrogate - https://blog.eletrogate.com/guia-completo-do-display-lcd-arduino/
+   Arduino Nano - LCD 16/2 azul - IDE 1.8.5
+   Gustavo Murta   12/abril/2018
+   Biblioteca LiquidCrystal https://github.com/arduino-libraries/LiquidCrystal
+*/
 
-// Definições para o motor de passo
-#define STEP_PIN_X 2
-#define DIR_PIN_X 3
+#include <LiquidCrystal.h>        // usando a biblioteca LiquidCrystal
 
-#define STEP_PIN_Z 4
-#define DIR_PIN_Z 5
+const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7; // definicao dos pinos do Display
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);                // configurando os pinos
 
-AccelStepper stepperX(AccelStepper::DRIVER, STEP_PIN_X, DIR_PIN_X);
-AccelStepper stepperZ(AccelStepper::DRIVER, STEP_PIN_Z, DIR_PIN_Z);
 
-void setup() {
-  // Inicialização de código aqui (configuração de pinos, inicialização de LCD, etc.)
-  stepperX.setMaxSpeed(1000);
-  stepperX.setAcceleration(500);
-  stepperZ.setMaxSpeed(1000);
-  stepperZ.setAcceleration(500);
-}
+byte customChar[8] =              // Matriz do caracter especial 
+{
+  0b00000,
+  0b11011,
+  0b11011,
+  0b00100,
+  0b00100,
+  0b10001,
+  0b01110,
+  0b00000
+};
 
-void loop() {
-  // Código para ler botões, selecionar modelo, mover motores, etc.
+void setup()                             // ate 8 caracteres especiais podem ser criados
+{
+  lcd.clear();                           // limpa a tela
+  lcd.createChar(1, customChar);         // criando o caracter especial 1
+  lcd.begin(16, 2);                      // definindo o LCD - 16 colunas e 2 linhas
+  lcd.write((byte)1);                    // imprimindo o carcter especial 1
+ }
+
+void loop()
+{
 }
