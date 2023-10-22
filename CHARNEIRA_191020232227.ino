@@ -3,7 +3,10 @@
    Arduino Nano - LCD 16/2 azul - IDE 1.8.5
    Gustavo Murta   12/abril/2018
    Biblioteca LiquidCrystal https://github.com/arduino-libraries/LiquidCrystal
-*/
+  
+   grande dia!! instalei o git no celular para poder programar por ele, quando necessário 
+
+   */
 
 #include <LiquidCrystal.h>        // usando a biblioteca LiquidCrystal
 
