@@ -1,0 +1,55 @@
+#include <LiquidCrystal_I2C.h>
+
+// Inicialize o display LCD
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// Pinos dos botões
+const int buttonPin1 = 2;
+const int buttonPin2 = 3;
+const int buttonPin3 = 4;
+
+void setup() {
+  // Inicialize o LCD com 16 colunas e 2 linhas
+  lcd.begin(16, 2);
+
+  // Inicialize os pinos dos botões
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
+  pinMode(buttonPin3, INPUT);
+
+  // Exiba a tela inicial
+  lcd.print("Selecione um item:");
+  lcd.setCursor(0, 1);
+  lcd.print("1. Item1");
+}
+
+void loop() {
+  // Verifique se o Button1 foi pressionado
+  if (digitalRead(buttonPin1) == HIGH) {
+    // Exiba informações para o Item1
+    lcd.clear();
+    lcd.print("Item1 selecionado");
+    delay(2000); // Aguarde 2 segundos (ajuste conforme necessário)
+    // Execute a sequência para o Item1
+    executarSequenciaItem1();
+    exibirTelaInicial();
+  }
+
+  // Adicione lógica semelhante para os outros botões e itens
+
+  // ...
+
+}
+
+// Adapte essas funções conforme necessário para cada item
+void executarSequenciaItem1() {
+  // Lógica para o Item1
+}
+
+void exibirTelaInicial() {
+  lcd.clear();
+  lcd.print("Selecione um item:");
+  lcd.setCursor(0, 1);
+  lcd.print("1. Item1");
+  // Adicione as opções para outros itens conforme necessário
+}
