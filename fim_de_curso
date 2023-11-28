@@ -1,0 +1,62 @@
+#include <AccelStepper.h>
+
+// Define os pinos do motor de passo
+#define STEP_PIN 9
+#define DIR_PIN 8
+
+// Define os pinos para os fins de curso
+#define ENDSTOP_1 2
+#define ENDSTOP_2 3
+#define ENDSTOP_3 4
+#define ENDSTOP_4 5
+
+// Crie uma instância do motor de passo
+AccelStepper stepper(AccelStepper::DRIVER, STEP_PIN, DIR_PIN);
+
+void setup() {
+  // Configuração do motor de passo
+  stepper.setMaxSpeed(1000); // Velocidade máxima em passos por segundo
+  stepper.setAcceleration(500); // Aceleração em passos por segundo ao quadrado
+
+  // Configuração dos fins de curso como entradas
+  pinMode(ENDSTOP_1, INPUT_PULLUP);
+  pinMode(ENDSTOP_2, INPUT_PULLUP);
+  pinMode(ENDSTOP_3, INPUT_PULLUP);
+  pinMode(ENDSTOP_4, INPUT_PULLUP);
+}
+
+void loop() {
+  // Girar 180 graus (meio passo a meio passo)
+  stepper.move(200); // 200 passos = 180 graus
+
+  // Enquanto o motor estiver em movimento
+  while (stepper.distanceToGo() != 0) {
+    stepper.run();
+    
+    // Verifica os fins de curso
+    if (digitalRead(ENDSTOP_1) == LOW || digitalRead(ENDSTOP_2) == LOW || digitalRead(ENDSTOP_3) == LOW || digitalRead(ENDSTOP_4) == LOW) {
+      stepper.stop(); // Para o motor se algum fim de curso for acionado
+      break;
+    }
+  }
+
+  // Aguarde um momento antes de retornar
+  delay(1000);
+
+  // Inverter a direção e girar de volta 180 graus
+  stepper.move(-200); // -200 passos = -180 graus
+
+  // Enquanto o motor estiver em movimento
+  while (stepper.distanceToGo() != 0) {
+    stepper.run();
+    
+    // Verifica os fins de curso
+    if (digitalRead(ENDSTOP_1) == LOW || digitalRead(ENDSTOP_2) == LOW || digitalRead(ENDSTOP_3) == LOW || digitalRead(ENDSTOP_4) == LOW) {
+      stepper.stop(); // Para o motor se algum fim de curso for acionado
+      break;
+    }
+  }
+
+  // Aguarde um momento antes de retornar
+  delay(1000);
+}
