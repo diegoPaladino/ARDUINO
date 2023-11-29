@@ -1,0 +1,26 @@
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+void setup() {
+  Serial.begin(9600);
+  mlx.begin();
+}
+
+void loop() {
+  double temperatura = mlx.readObjectTempC();
+
+  if (temperatura >= 150.0) {
+    // Inicia o algoritmo quando a temperatura atinge 150 graus
+    iniciarAlgoritmo();
+  }
+
+  delay(500); // Aguarda meio segundo antes de ler novamente
+}
+
+void iniciarAlgoritmo() {
+  // Insira aqui o código do seu algoritmo
+  Serial.println("Temperatura atingiu 150 graus. Iniciando algoritmo.");
+  // ...
+}
