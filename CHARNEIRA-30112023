@@ -1,0 +1,82 @@
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <Adafruit_MLX90614.h>
+#include <Stepper.h>
+
+// Configurações do sensor MLX90614
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+// Configurações do LCD 16x2 com módulo I2C
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// Configurações dos motores de passo e dos relés
+const int passosPorRevolucao = 200; // Ajuste conforme seu motor
+Stepper motorX(passosPorRevolucao, 2, 3, 4, 5);
+Stepper motorZ(passosPorRevolucao, 6, 7, 8, 9);
+
+const int releMotorVibratorio = 10;
+const int releControladorFerroSolda = 11;
+const int releControladorPneumatico = 12;
+
+void setup() {
+  mlx.begin();
+  lcd.init();
+  lcd.backlight();
+  
+  pinMode(releMotorVibratorio, OUTPUT);
+  pinMode(releControladorFerroSolda, OUTPUT);
+  pinMode(releControladorPneumatico, OUTPUT);
+  
+  // Configurar a velocidade dos motores (ajuste conforme necessário)
+  motorX.setSpeed(60);
+  motorZ.setSpeed(60);
+}
+
+void loop() {
+  double temperatura = mlx.readObjectTempC();
+  lcd.clear();
+
+  if (temperatura < 150.0) {
+    lcd.print("ESQUENTANDO");
+    lcd.setCursor(0, 1);
+    lcd.print("AGUARDE");
+    delay(2000); // Aguarda 2 segundos antes de medir novamente
+    return;
+  }
+
+  // Lógica para mostrar as opções e selecionar o modelo
+  // Esta parte precisa ser expandida com sua lógica de entrada
+  int modeloSelecionado = selecionarModelo();
+
+  // Executa o algoritmo específico para o modelo selecionado
+  executarModelo(modeloSelecionado);
+}
+
+int selecionarModelo() {
+  // Implemente sua lógica de seleção de modelo aqui
+  // Retorne o número do modelo selecionado
+  return 0; // Exemplo: retorna 0 para "ALBERT"
+}
+
+void executarModelo(int modelo) {
+  switch (modelo) {
+    case 0: // ALBERT
+      moverEixoX(10); // Para a esquerda
+      moverEixoZ(5);  // Para baixo
+      // Adicione mais comandos conforme necessário
+      break;
+    // Adicione casos para ANA, BILL, EVA, LILIBETE
+  }
+}
+
+void moverEixoX(int cm) {
+  int passos = cm * passosPorRevolucao / (/* diâmetro da polia ou fuso */);
+  motorX.step(passos);
+}
+
+void moverEixoZ(int cm) {
+  int passos = cm * passosPorRevolucao / (/* diâmetro da polia ou fuso */);
+  motorZ.step(passos);
+}
+
+// Adicione funções para ativar/desativar relés, movimentos adicionais, etc.
