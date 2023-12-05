@@ -1,0 +1,23 @@
+// Define the Arduino pins for the rain sensor and relay
+const int rainSensorPin = 2; // Digital output from the rain sensor module
+const int relayPin = 3;      // Relay control pin
+
+void setup() {
+  // Initialize the rain sensor pin as input and relay pin as output
+  pinMode(rainSensorPin, INPUT);
+  pinMode(relayPin, OUTPUT);
+}
+
+void loop() {
+  // Read the state of the rain sensor
+  int sensorState = digitalRead(rainSensorPin);
+
+  // If the sensor detects rain (low signal), activate the relay
+  if (sensorState == LOW) {
+    digitalWrite(relayPin, HIGH); // Turns on the relay
+  } else {
+    digitalWrite(relayPin, LOW);  // Turns off the relay
+  }
+
+  delay(200); // Short delay to stabilize the sensor reading
+}
