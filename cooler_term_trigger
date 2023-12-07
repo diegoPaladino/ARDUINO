@@ -1,0 +1,33 @@
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+#define THERM_PIN A0  // Pino analógico onde o sensor MLX90614 está conectado
+#define RELAY_PIN 8    // Pino digital onde o relé está conectado
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+void setup() {
+  Serial.begin(9600);
+  mlx.begin();
+  pinMode(RELAY_PIN, OUTPUT);
+  digitalWrite(RELAY_PIN, LOW);  // Desliga o relé no início
+}
+
+void loop() {
+  float tempC = mlx.readObjectTempC();
+
+  Serial.print("Temperatura: ");
+  Serial.print(tempC);
+  Serial.println("°C");
+
+  if (tempC >= 50.0) {
+    // Se a temperatura atingir ou exceder 50 graus Celsius, ligue o relé
+    digitalWrite(RELAY_PIN, HIGH);
+    Serial.println("Temperatura atingiu 50°C. Relé ativado.");
+  } else {
+    // Caso contrário, desligue o relé
+    digitalWrite(RELAY_PIN, LOW);
+  }
+
+  delay(1000);  // Espere um segundo antes de verificar novamente
+}
