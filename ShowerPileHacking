@@ -1,0 +1,13 @@
+
+class ShowerPileHacking:
+    def __init__(self):
+        self.hot_water = False
+
+    def toggle_hot_water(self):
+        if self.hot_water:
+            print("Desligando água quente.")
+            self.hot_water = False
+        else:
+            print("Ligando água quente.")
+            self.hot_water = True
+
