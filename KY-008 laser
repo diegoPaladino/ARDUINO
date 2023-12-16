@@ -1,0 +1,12 @@
+const int laserPin = 7;  // Define o pino 7 como saída para o módulo KY008 Laser
+
+void setup() {
+  pinMode(laserPin, OUTPUT);  // Configura o pino como saída
+}
+
+void loop() {
+  digitalWrite(laserPin, HIGH);  // Liga o Laser por 2 milissegundos
+  delay(2);
+  digitalWrite(laserPin, LOW);  // Desliga o Laser
+  delay(100);  // Aguarda 100 milissegundos
+}
