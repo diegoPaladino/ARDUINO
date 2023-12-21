@@ -1,0 +1,19 @@
+int laserPin = 3;      // Pino do módulo laser
+int receiverPin = A0;  // Pino do receptor (fototransistor/fotodiodo)
+int threshold = 500;   // Limiar para detecção da interrupção do feixe
+
+void setup() {
+  pinMode(laserPin, OUTPUT);
+  pinMode(receiverPin, INPUT);
+  Serial.begin(9600);
+  digitalWrite(laserPin, HIGH); // Liga o laser
+}
+
+void loop() {
+  int sensorValue = analogRead(receiverPin);
+  if (sensorValue < threshold) {
+    // Ação quando a charneira interrompe o feixe
+    Serial.println("Charneira detectada!");
+  }
+  delay(100); // Pequena pausa para estabilidade
+}
