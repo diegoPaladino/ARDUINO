@@ -1,0 +1,23 @@
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+void setup() {
+  Serial.begin(9600);
+  mlx.begin();
+}
+
+void loop() {
+  float objTemp = mlx.readObjectTempC();
+  Serial.print("Temperatura do objeto: ");
+  Serial.print(objTemp);
+  Serial.println(" °C");
+
+  if (objTemp >= 150.0) {
+    Serial.println("Temperatura atingida, continuando o código...");
+    // Coloque aqui o restante do seu código que deseja executar quando atingir 150 graus.
+  }
+
+  delay(1000); // Aguarda 1 segundo entre as leituras
+}
