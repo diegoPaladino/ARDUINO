@@ -1,0 +1,24 @@
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+
+void setup() {
+  Serial.begin(9600);
+  mlx.begin();  
+}
+
+void loop() {
+  double temperatura = mlx.readObjectTempC();
+  
+  if (temperatura >= 30) {  // Supõe-se que a temperatura ambiente é menor que 30 graus Celsius.
+    Serial.println("Objeto detectado!");
+    
+    if (temperatura >= 150) {
+      Serial.println("Temperatura de 150 graus alcançada, prosseguindo com o algoritmo.");
+      // Insira aqui o código para o que deve acontecer quando alcançar 150 graus.
+    }
+  }
+  
+  delay(500);  // Um pequeno atraso para não sobrecarregar o sensor.
+}
