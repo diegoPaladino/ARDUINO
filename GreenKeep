@@ -1,0 +1,47 @@
+// GreenKeep: Sistema de Irrigação Inteligente
+
+#include <DHT.h>
+
+// Definindo os pinos
+const int sensorUmidadePino = A0;  // Pino do sensor de umidade
+const int relePino = 7;            // Pino conectado ao módulo relé
+
+// Variáveis
+int umidadeSolo;                   // Para armazenar a leitura da umidade
+const int umidadeLimite = 60;      // Limite de umidade do solo para ativar a irrigação
+
+void setup() {
+  // Inicializa a comunicação serial
+  Serial.begin(9600);
+
+  // Define o pino do relé como saída
+  pinMode(relePino, OUTPUT);
+
+  // Inicialmente, mantém o relé desligado
+  digitalWrite(relePino, HIGH);
+}
+
+void loop() {
+  // Lê a umidade do solo
+  umidadeSolo = analogRead(sensorUmidadePino);
+
+  // Converte e exibe a leitura (0 a 100%)
+  int umidadePercentual = map(umidadeSolo, 0, 1023, 100, 0);
+  Serial.print("Umidade do Solo: ");
+  Serial.print(umidadePercentual);
+  Serial.println("%");
+
+  // Verifica se a umidade está abaixo do limite
+  if(umidadePercentual < umidadeLimite) {
+    // Ativa o sistema de irrigação
+    digitalWrite(relePino, LOW);
+    Serial.println("Irrigando...");
+  } else {
+    // Desativa o sistema de irrigação
+    digitalWrite(relePino, HIGH);
+    Serial.println("Irrigação desligada.");
+  }
+
+  // Espera um pouco antes de ler novamente
+  delay(2000);
+}
