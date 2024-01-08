@@ -19,5 +19,5 @@ void loop() {
   }
   
   // Um pequeno atraso para evitar leituras ruidosas
-  delay(200);
+  delay(2000);
 }
