@@ -21,3 +21,4 @@ void loop() {
   // Um pequeno atraso para evitar leituras ruidosas
   delay(2000);
 }
+#seeifrun
