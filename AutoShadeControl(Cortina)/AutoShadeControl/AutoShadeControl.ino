@@ -24,3 +24,5 @@ void loop() {
   blindServo.write(currentPosition);  // move a persiana para a posição desejada
   delay(15);  // espera o servo alcançar a posição
 }
+
+// write a new code this. or upgrade it
