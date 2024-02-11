@@ -1,6 +1,8 @@
 
 # Sistema de Controle de Nível de Água
 
+//descobri um método ultra eficiente para medição, chamado 'ladder resistor' que pode potencializar significativamente esse projeto 
+
 Este projeto consiste em um sistema automatizado para controlar o nível de água, utilizando um sensor de nível e uma válvula solenoide. O código é escrito em C++ para plataformas como Arduino.
 
 ## Funcionalidades
