@@ -42,3 +42,4 @@ void loop() {
 
 void modulateLighting(DateTime currentTime) {
   // Cálculo de exemplo para ajust
+// pesquisar niveis odeais de cores para 'ativar' sono no usuário 
