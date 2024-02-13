@@ -29,3 +29,4 @@ Cons:
 
 ## License
 This project is free and open-source, available for modification and distribution.
+Diegopaladino 
