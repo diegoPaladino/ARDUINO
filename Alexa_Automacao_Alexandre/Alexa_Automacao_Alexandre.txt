@@ -318,3 +318,5 @@ boolean connectWifi() {
   }
   return state; // retorna o estado da conexão
 }
+
+//checar viabilidade para vários modelos de alexa
