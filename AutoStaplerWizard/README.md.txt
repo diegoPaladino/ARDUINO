@@ -28,3 +28,5 @@ Este projeto foi criado para automatizar o processo de grampeamento de papéis, 
 2. Conecte o sensor de luz ao pino A0.
 3. Carregue o código no Arduino.
 4. Ajuste
+
+## ajustar projeto para funcionar junto a perfurador + dispensador de fita automático 
