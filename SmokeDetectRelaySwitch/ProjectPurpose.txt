@@ -1,0 +1,1 @@
+The purpose of this project is to enhance safety measures by automatically activating a relay, which could turn on a safety light, an alarm, or a ventilation system, in the presence of smoke, indicating a potential fire hazard

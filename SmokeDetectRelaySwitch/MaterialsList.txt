@@ -1,0 +1,6 @@
+Arduino board (Uno, Mega, Nano, etc.)
+MQ-2 smoke/gas sensor module (or any other smoke detector module you prefer)
+Relay module (5V single-channel relay module is suitable for most applications)
+Jumper wires
+Breadboard (optional, for easier prototyping)
+Power supply for the Arduino

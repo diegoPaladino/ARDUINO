@@ -1,0 +1,9 @@
+Wiring Instructions
+MQ-2 Smoke Sensor to Arduino:
+VCC to 5V
+GND to GND
+A0 (analog output) to A0 on Arduino (or any other available analog pin)
+Relay Module to Arduino:
+VCC to 5V
+GND to GND
+IN to a digital pin (e.g., D7)
