@@ -1,0 +1,22 @@
+Escreva um código para Arduino que:
+
+OBJETIVO GERAL
+	DETECTOR DE FALTA D'ÁGUA
+
+PRECISO QUE:
+	implementar sistema que detecte a falta de água oriunda da rua (sistema de fornecimento público)
+
+Aos moldes do github, em inglês, crie:
+A. Um nome criativo com excelente SEO (Search Engine Optimization), sem caracteres especial algum e sem intervalos (Camel case, Pascal case e Kebab case)
+B. O código (Utilize da filosofia CLEANCODE para elaborar o código)
+C. Título do Commit (no máximo 50 caracteres, contando com espaços)
+D. Descrição do Commit
+E. Crie e disponibilize para download o arquivo README.md (com Introdução, Lista de Materiais Necessários,Propósito do Projeto, Prós e Contras, Orientações Gerais e Licença. Faça a estrutura do README.md formatada com Markdown):
+O arquivo README.md é tradicionalmente o primeiro ponto de contato que qualquer pessoa terá com seu repositório no GitHub. Ele deve fornecer uma visão geral clara, concisa e completa do projeto. Veja como você pode estruturar, no README:
+Introdução (esta introdução deve estar dentro do README.md): Uma breve descrição do que é o projeto e seu objetivo geral.
+Lista de Materiais Necessários: Todos os componentes necessários para construir e executar o projeto.
+Propósito do Projeto: Uma explicação detalhada do que o projeto faz, por que foi criado, e quem se beneficiaria dele.
+Prós e Contras: Uma discussão honesta sobre os benefícios e as limitações do projeto.
+Orientações Gerais: Passo a passo para configurar, instalar, e operar o projeto. Pode incluir instruções de instalação, uso, e solução de problemas.
+Licença: Informação sobre como o projeto pode ser usado por outras pessoas, que é free; opensource.
+
