@@ -48,3 +48,4 @@ void turnOffAC() {
   irsend.sendRaw(irSignal, sizeof(irSignal) / sizeof(irSignal[0]), 38);
   Serial.println("AC turned OFF");
 }
+// testing 
